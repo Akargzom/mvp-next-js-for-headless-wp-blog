@@ -1,1 +1,1 @@
-Small simple next js blog for headless graphql wordpress
+Mvp next js blog for headless graphql wordpress
