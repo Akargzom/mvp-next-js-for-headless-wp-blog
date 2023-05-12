@@ -3,7 +3,7 @@ import '../styles/globals.css'
 import { client } from '../apollo/apollo'
 import Header from '../components/layout/header/header'
 import Footer from '../components/layout/Footer/footer'
-import { GET_MENU_HEADER } from '../queries/get_queries'
+import Seo from '../components/seo/seo'
 export default function App({ Component, pageProps}) {
   return (
     <ApolloProvider client={client}>

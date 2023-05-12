@@ -2,7 +2,8 @@ import c from './single_page.module.css'
 import { useEffect, useState } from "react"
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { GET_ALL_PAGES, getPage } from '../queries/get_queries'
+import { GET_ALL_PAGES, GET_HOME, getPage } from '../queries/get_queries'
+import Seo from '../components/seo/seo'
 const SinglePage = () => {
     let path = usePathname()
     const [page, setPage] = useState(null)
@@ -11,11 +12,14 @@ const SinglePage = () => {
     }, [path])
     const src = page && page.data && page.data.page && page.data.page.featuredImage ? `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/${page.data.page.featuredImage.node.uri}` : '';
     return (
+        <>
+        <Seo seo={page?.data?.page?.seo} uri={page?.data?.page?.uri}/>
         <div>
             {page && page.data.page && page.data.page.featuredImage && <Image loader={() => src} src={src}  className={c.img} height={500} width={500}  alt={page.data.page.featuredImage.node.altText} />}
            <h1>{page && page.data.page && page.data.page.title}</h1>
             <div dangerouslySetInnerHTML={page && page.data.page && { __html: page.data.page.content }}></div>
         </div>
+        </>
 
     )
 }

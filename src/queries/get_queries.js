@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client"
-import menuFragment from "./fragments/menus";
-import {client} from "../apollo/apollo";
+import menuFragment from "./fragments/menus"
+import {client} from "../apollo/apollo"
+import seoFragment from "./fragments/seo-fragment"
 export const getPosts = async (page) => {
   const GET_POSTS = gql`
 {
@@ -33,14 +34,20 @@ export async function getPage(slug) {
         title
         content
         slug
+        uri
         featuredImage {
           node {
             altText
             uri
           }
+          
         }
+        seo{
+          ...SeoFragment
+      }
       }
     }
+    ${seoFragment}
   `
   ;
  try{
@@ -70,8 +77,13 @@ export async function getPost(slug) {
         title
         date
         slug
+        uri
+        seo{
+          ...SeoFragment
+      }
       }
     }
+    ${seoFragment}
     `
     ;
 try {
@@ -156,5 +168,21 @@ export const GET_ALL_POSTS = gql`
             }
           }
         }
+      `
+  ;
+
+  export const GET_HOME = gql`
+  {
+    pageBy(uri: "/") {
+      id
+      title
+      content
+      uri
+      seo{
+        ...SeoFragment
+    }
+    }
+  }
+  ${seoFragment}
       `
   ;
