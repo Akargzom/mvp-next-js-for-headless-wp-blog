@@ -2,8 +2,10 @@ import c from './single_page.module.css'
 import { useEffect, useState } from "react"
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
-import { GET_ALL_PAGES, GET_HOME, getPage } from '../queries/get_queries'
+import { GET_ALL_PAGES, getPage } from '../queries/get_queries'
+import Head from 'next/head'
 import Seo from '../components/seo/seo'
+import parse from 'html-react-parser'
 const SinglePage = () => {
     let path = usePathname()
     const [page, setPage] = useState(null)
@@ -14,6 +16,17 @@ const SinglePage = () => {
     return (
         <>
         <Seo seo={page?.data?.page?.seo} uri={page?.data?.page?.uri}/>
+        <Head>
+				<link rel="shortcut icon" href='../../public/favicon.ico' />
+				{page?.data?.page?.schemaDetails && (
+					<script
+						type='application/ld+json'
+						className='yoast-schema-graph'
+						key='yoastSchema'
+						dangerouslySetInnerHTML={{ __html: parse(page?.data?.page?.schemaDetails)}}
+					/>
+				)}
+			</Head>
         <div>
             {page && page.data.page && page.data.page.featuredImage && <Image loader={() => src} src={src}  className={c.img} height={500} width={500}  alt={page.data.page.featuredImage.node.altText} />}
            <h1>{page && page.data.page && page.data.page.title}</h1>
