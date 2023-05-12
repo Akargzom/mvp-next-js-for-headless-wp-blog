@@ -11,7 +11,7 @@ import parse from 'html-react-parser'
 // import { Inter } from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
-const Home = (props) =>{
+const Home = (props) => {
     const [page, setPage] = useState(6),
         [posts, setPosts] = useState(() => getPosts(page)),
         loadMore = () => {
@@ -21,39 +21,39 @@ const Home = (props) =>{
             return `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/${src}`;
         }
     useEffect(() => {
-        getPosts(page).then(r => {r && setPosts(r)})
+        getPosts(page).then(r => { r && setPosts(r) })
     }, [page])
-    return(
+    return (
         <Layout>
-        <Seo seo={props.getMain.data?.pageBy?.seo} uri={props.getMain.data?.pageBy?.uri}/>
-        <Head>
-				<link rel="shortcut icon" href='../../../../public/favicon.ico' />
-				{props.getMain.data?.pageBy?.seo.schemaDetails && (
-					<script
-						type='application/ld+json'
-						className='yoast-schema-graph'
-						key='yoastSchema'
-						dangerouslySetInnerHTML={{ __html: parse(props.getMain.data.pageBy.seo.schemaDetails)}}
-					/>
-				)}
-			</Head>
-      <main>
-      <div>
-            {posts.data && posts.data.posts.nodes.map(p => {
-                return (
-                    <Link key={p.postId} href={'post/'+p.slug}>
-                        <h2>{p.title}</h2>
-                        {p.featuredImage && <Image loader={imageLoader} src={p.featuredImage.node.uri} className={c.img} height={500} width={500} alt={p.featuredImage.node.altText} />}
-                        <div > {p.date}</div>
-                    </Link>
-                )
-            })}
-            {props.getAll.data && props.getAll.data.posts.nodes.length > 6 && posts.data && posts.data.posts.nodes.length < props.getAll.data.posts.nodes.length &&
-             <div onClick={loadMore} className="loadMore">Load More</div>}
-        </div>
+            <Seo seo={props.getMain.data?.pageBy?.seo} uri={props.getMain.data?.pageBy?.uri} />
+            <Head>
+                <link rel="shortcut icon" href='../../../../public/favicon.ico' />
+                {props.getMain.data?.pageBy?.seo.schemaDetails && (
+                    <script
+                        type='application/ld+json'
+                        className='yoast-schema-graph'
+                        key='yoastSchema'
+                        dangerouslySetInnerHTML={{ __html: parse(props.getMain.data.pageBy.seo.schemaDetails) }}
+                    />
+                )}
+            </Head>
+            <main>
+                <div>
+                    {posts.data && posts.data.posts.nodes.map(p => {
+                        return (
+                            <Link key={p.postId} href={'post/' + p.slug}>
+                                <h2>{p.title}</h2>
+                                {p.featuredImage && <Image loader={imageLoader} src={p.featuredImage.node.uri} className={c.img} height={500} width={500} alt={p.featuredImage.node.altText} />}
+                                <div > {p.date}</div>
+                            </Link>
+                        )
+                    })}
+                    {props.getAll.data && props.getAll.data.posts.nodes.length > 6 && posts.data && posts.data.posts.nodes.length < props.getAll.data.posts.nodes.length &&
+                        <div onClick={loadMore} className="loadMore">Load More</div>}
+                </div>
 
-      </main>
-      </Layout>
+            </main>
+        </Layout>
     )
 }
 export default Home

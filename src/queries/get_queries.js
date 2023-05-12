@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client"
 import menuFragment from "./fragments/menus"
-import {client} from "../apollo/apollo"
+import { client } from "../apollo/apollo"
 import seoFragment from "./fragments/seo-fragment"
 export const getPosts = async (page) => {
   const GET_POSTS = gql`
@@ -22,13 +22,13 @@ export const getPosts = async (page) => {
   }
 }
 `
-      ;
- return await client.query({
-      query: GET_POSTS
+    ;
+  return await client.query({
+    query: GET_POSTS
   })
 }
 export async function getPage(slug) {
-  const GET_SINGLE_PAGE = gql `
+  const GET_SINGLE_PAGE = gql`
     {
       page(id: "http://dev11.romanuke.com/wordpress/${slug}", idType: URI) {
         title
@@ -49,14 +49,14 @@ export async function getPage(slug) {
     }
     ${seoFragment}
   `
-  ;
- try{
-  return await client.query({
-    query: GET_SINGLE_PAGE
-  })
-} catch {
-  console.log('apollo error')
-}
+    ;
+  try {
+    return await client.query({
+      query: GET_SINGLE_PAGE
+    })
+  } catch {
+    console.log('apollo error')
+  }
 }
 export async function getPost(slug) {
   const GET_SINGLE_POSTS = gql`
@@ -86,13 +86,13 @@ export async function getPost(slug) {
     ${seoFragment}
     `
     ;
-try {
- return await client.query({
-    query: GET_SINGLE_POSTS
-  })
-} catch {
-  console.log('apollo error')
-}
+  try {
+    return await client.query({
+      query: GET_SINGLE_POSTS
+    })
+  } catch {
+    console.log('apollo error')
+  }
 }
 export const GET_MENU_HEADER = gql`
   {
@@ -122,7 +122,7 @@ export const GET_MENU_HEADER = gql`
   `
   ;
 
-  export const GET_ALL_PAGES = gql `
+export const GET_ALL_PAGES = gql`
   {
     pages {
       nodes {
@@ -132,7 +132,7 @@ export const GET_MENU_HEADER = gql`
     }
   }`
   ;
-  export const GET_MENU_FOOTER = gql`
+export const GET_MENU_FOOTER = gql`
   {
     getHeader {
       siteLogoUrl
@@ -171,7 +171,7 @@ export const GET_ALL_POSTS = gql`
       `
   ;
 
-  export const GET_HOME = gql`
+export const GET_HOME = gql`
   {
     pageBy(uri: "/") {
       id
