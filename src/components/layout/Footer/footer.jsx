@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { GET_MENU_FOOTER } from '../../../queries/get_queries'
 import { client } from '../../../apollo/apollo'
 import { useEffect, useState } from 'react'
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
 const Footer = () => {
     const [menuItems, setMenuItems] = useState('')
     useEffect(()=>{
@@ -13,9 +15,9 @@ const Footer = () => {
     }, [])
     const src = menuItems.data && menuItems.data.getHeader.siteLogoUrl ? menuItems.data.getHeader.siteLogoUrl : ''
     return (
-        <footer>
+        <footer id={c.footer} className={inter.className}>
             {menuItems.data && menuItems.data.getHeader.siteLogoUrl && <Image alt={menuItems.data.getHeader.siteTitle} loader={() => src} src={src}  className={c.img} height={500} width={500}/>}
-        <ul>
+        <ul className={c.menu}>
             {
                 menuItems.data && menuItems.data.menuItems.nodes.length &&
                 menuItems.data.menuItems.nodes.map(

@@ -11,6 +11,7 @@ export const getPosts = async (page) => {
         date
         postId
         slug
+        content
         featuredImage {
           node {
             altText

@@ -1,16 +1,14 @@
-import Head from "next/head"
-import Footer from "./Footer/footer"
-import Header from "./header/header"
-import Seo from "../seo/seo"
+import { Inter } from 'next/font/google'
+const inter = Inter({ subsets: ['latin'] })
 // import dymanic from 'next/dynamic'
 // const DynamicFooter = dynamic(()=> import ("./Footer/footer"), {
 //     ssr: false
 // })
 const Layout = ({ children }) => {
     return (
-        <>
+        <div className={inter.className}>
             {children}
-        </>
+        </div>
     )
 }
 export default Layout
