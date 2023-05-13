@@ -7,7 +7,7 @@ import Seo from '../components/seo/seo'
 export default function App({ Component, pageProps}) {
   return (
     <ApolloProvider client={client}>
-      <Header {...pageProps}/>
+      <Header/>
       <Component {...pageProps} />
       <Footer />
     </ApolloProvider>
