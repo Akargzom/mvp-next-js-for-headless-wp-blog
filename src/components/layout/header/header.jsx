@@ -16,7 +16,7 @@ const Header = () => {
     const src = menuItems.data && menuItems.data.getHeader.siteLogoUrl ? menuItems.data.getHeader.siteLogoUrl : ''
     return (
         <header id={c.header} className={inter.className}>
-            {menuItems.data && menuItems.data.getHeader.siteLogoUrl && <Image alt={menuItems.data.getHeader.siteTitle} loader={() => src} src={src}  className={c.img} height={500} width={500}/>}
+            {menuItems.data && menuItems.data.getHeader.siteLogoUrl && <Link href={'/'}><Image alt={menuItems.data.getHeader.siteTitle} loader={() => src} src={src}  className={c.img} height={500} width={500}/></Link>}
         <ul  className={c.menu}>
             {
                 menuItems.data && menuItems.data.menuItems.nodes.length &&
