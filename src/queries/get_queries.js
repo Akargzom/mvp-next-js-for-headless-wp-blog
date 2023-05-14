@@ -31,7 +31,7 @@ export const getPosts = async (page) => {
 export async function getPage(slug) {
   const GET_SINGLE_PAGE = gql`
     {
-      page(id: "http://dev11.romanuke.com/wordpress/${slug}", idType: URI) {
+      page(id: "https://raduga.anebopro.com/wordpress/${slug}", idType: URI) {
         title
         content
         slug

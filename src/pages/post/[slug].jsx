@@ -42,7 +42,7 @@ const Post = () => {
                     )}
                 </Head>
                 <div className='container'>
-                    {post && post.data && post.data.post && post.data.post.featuredImage && <Image className={c.img} loader={() => src} src={src} className={c.img} height={500} width={500} alt={post.data.post.featuredImage.node.altText} />}
+                    {post && post.data && post.data.post && post.data.post.featuredImage && <Image className={c.img} loader={() => src} src={src} height={500} width={500} alt={post.data.post.featuredImage.node.altText} />}
                     {post && post.data && post.data.post && <h1 className={c.title}>{post.data.post.title}</h1>}
                     {post && post.data && post.data.post && <div className={c.content} dangerouslySetInnerHTML={{ __html: post.data.post.content }}></div>}
                     {post && post.data && post.data.post && <div className={c.date}> {post.data.post.date.substring(0, post.data.post.date.length - 9)}</div>}

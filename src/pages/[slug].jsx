@@ -21,7 +21,7 @@ const SinglePage = () => {
         }).then(r => { r && setTemp(prev => prev = r.data.pages.nodes) })
     }, [temp])
     useEffect(() => {
-        getPage(path).then(r => setPage(r))
+       path &&  getPage(path.substring(1)).then(r => setPage(r))
     }, [path])
     if (temp.filter(el => '/' + el.slug === path).length > 0) {
         const src = page && page.data && page.data.page && page.data.page.featuredImage ? `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL}/${page.data.page.featuredImage.node.uri}` : '';

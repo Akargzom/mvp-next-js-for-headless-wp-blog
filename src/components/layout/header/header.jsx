@@ -22,13 +22,13 @@ const Header = () => {
                 menuItems.data && menuItems.data.menuItems.nodes.length &&
                 menuItems.data.menuItems.nodes.map(
                     k => <li key={k.id} className={k.cssClasses ? '' + k.cssClasses.map(c => c) + ' menuItem' : 'menuItem'}>
-                        <Link  href={k.url.replace('http://dev11.romanuke.com/wordpress/', '') ? k.url.replace('http://dev11.romanuke.com/wordpress/', '') : '/'} dangerouslySetInnerHTML={{ __html: k.label }}></Link>
+                        <Link  href={k.url.replace('https://raduga.anebopro.com/wordpress/', '') ? k.url.replace('https://raduga.anebopro.com/wordpress/', '') : '/'} dangerouslySetInnerHTML={{ __html: k.label }}></Link>
                         {
                             k.childItems.edges.length ?
                                 <ul className="submenu">
                                     {
                                         k.childItems.edges.map(el => <li className={el.node.cssClasses ? '' + el.node.cssClasses.map(c => c) + ' childMenuItem' : 'childMenuItem'} key={el.node.id}>
-                                            <Link  href={el.node.url.replace('http://dev11.romanuke.com/wordpress/', '')} dangerouslySetInnerHTML={{ __html: el.node.label }}></Link>
+                                            <Link  href={el.node.url.replace('https://raduga.anebopro.com/wordpress/', '')} dangerouslySetInnerHTML={{ __html: el.node.label }}></Link>
                                         </li>)
                                     }
                                 </ul>

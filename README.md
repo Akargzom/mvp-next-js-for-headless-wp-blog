@@ -1,1 +1,1 @@
-Mvp next js blog for headless graphql wordpress
+My first next js mini blog for headless graphql wordpress. Worpdress graphql aready plugged.
