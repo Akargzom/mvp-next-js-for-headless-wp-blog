@@ -1,13 +1,17 @@
 
 import Home from '../components/screens/home/home'
-import { GET_ALL_POSTS, GET_HOME, } from '../queries/get_queries'
+import { GET_ALL_POSTS, GET_HOME, GET_SERVER_POSTS, } from '../queries/get_queries'
 import { client } from '../apollo/apollo'
 import { Inter } from 'next/font/google'
+import Head from 'next/head'
 const inter = Inter({ subsets: ['latin'] })
 export default function HomePage(props) {
   return (
     <div className={inter.className}>
-      <Home getMain={props.getMain} getAll={props.getAllPosts} />
+            <Head>
+      <link rel="shortcut icon" href="../../public/favicon.ico" />
+      </Head>
+      <Home getMain={props.getMain} getAll={props.getAllPosts} serverposts={props.getServerPosts}/>
     </div>
   )
 }
@@ -17,11 +21,15 @@ export async function getStaticProps() {
   }),
     getMain = await client.query({
       query: GET_HOME
+    }),
+    getServerPosts = await client.query({
+      query: GET_SERVER_POSTS
     })
   return {
     props: {
       getAllPosts,
-      getMain
+      getMain,
+      getServerPosts
     },
     revalidate: 60
   };

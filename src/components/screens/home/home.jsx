@@ -34,7 +34,18 @@ const Home = (props) => {
             </Head>
             <main className={inter.className}>
                 <div className="container">
-                    {posts.data && posts.data.posts.nodes.map(p => {
+                    {posts.data ? posts.data.posts.nodes.map(p => {
+                        return (
+                            <Link className={c.wrap} key={p.postId} href={'post/' + p.slug}>
+                                 {p.featuredImage && <div style={{backgroundImage: 'url('+ process.env.NEXT_PUBLIC_WORDPRESS_API_URL+'/'+p.featuredImage.node.uri+')'}} className={c.img}></div>}
+                                <div className={c.info}>
+                                <h2 className={c.title}>{p.title}</h2>
+                                <div className={c.exc}>{p.content && p.content.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 150).split(" ").reverse().slice(1).reverse().join(" ") + '...'}</div>
+                                <div className={c.date}> {p.date.substring(0, p.date.length - 9)}</div>
+                                </div>
+                            </Link>
+                        )
+                    }) : props.getServerPosts && props.getServerPosts.data.posts.nodes.map(p => {
                         return (
                             <Link className={c.wrap} key={p.postId} href={'post/' + p.slug}>
                                  {p.featuredImage && <div style={{backgroundImage: 'url('+ process.env.NEXT_PUBLIC_WORDPRESS_API_URL+'/'+p.featuredImage.node.uri+')'}} className={c.img}></div>}

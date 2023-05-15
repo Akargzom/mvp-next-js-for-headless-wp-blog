@@ -28,6 +28,26 @@ export const getPosts = async (page) => {
     query: GET_POSTS
   })
 }
+export const GET_SERVER_POSTS = gql`
+{
+  posts{
+      nodes {
+        title
+        date
+        postId
+        slug
+        content
+        featuredImage {
+          node {
+            altText
+            uri
+          }
+        }
+    }
+    
+  }
+}
+`
 export async function getPage(slug) {
   const GET_SINGLE_PAGE = gql`
     {
