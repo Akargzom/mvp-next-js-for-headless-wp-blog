@@ -12,6 +12,7 @@ const Layout = ({ children, props }) => {
     return (
         <div className={inter.className}>
             <Head>
+                <meta name="google-site-verification" content="cx60xLTXYmeiSbtQ6BOBpL4_PMwx6-VUmGuwezGgiV4" />
                 <link rel="shortcut icon" href={props?.getHead?.data?.getHeader.favicon} />
             </Head>
             <Header getHead={props?.getHead} />
