@@ -1,19 +1,10 @@
 import { ApolloProvider } from '@apollo/client'
 import '../styles/globals.css'
 import { client } from '../apollo/apollo'
-import Header from '../components/layout/header/header'
-import Footer from '../components/layout/Footer/footer'
-import Seo from '../components/seo/seo'
-import Head from 'next/head'
 export default function App({ Component, pageProps}) {
   return (
     <ApolloProvider client={client}>
-      <Head>
-      <link rel="shortcut icon" href="../../public/favicon.ico" />
-      </Head>
-      <Header/>
       <Component {...pageProps} />
-      <Footer />
     </ApolloProvider>
   )
 }

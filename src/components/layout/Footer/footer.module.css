@@ -31,6 +31,12 @@
     text-transform: capitalize;
 }
 
+.menu .copy {
+    font-size: .75em;
+    margin-top: 2em;
+    margin-left: 2.97em;
+}
+
 @media (max-width:650px) {
     #footer {
         padding: 4em 3em;

@@ -48,6 +48,7 @@ export const GET_SERVER_POSTS = gql`
   }
 }
 `
+
 export async function getPage(slug) {
   const GET_SINGLE_PAGE = gql`
     {
@@ -120,6 +121,7 @@ export const GET_MENU_HEADER = gql`
     getHeader {
       siteLogoUrl
       siteTitle
+        favicon
     }
     menuItems(where: {location: HCMS_MENU_HEADER, parentId: ""}) {
       nodes {
@@ -158,6 +160,9 @@ export const GET_MENU_FOOTER = gql`
     getHeader {
       siteLogoUrl
       siteTitle
+    }
+    getFooter {
+      copyrightText
     }
     menuItems(where: {location: HCMS_MENU_FOOTER, parentId: ""}) {
       nodes {
@@ -207,3 +212,19 @@ export const GET_HOME = gql`
   ${seoFragment}
       `
   ;
+  export const GET_PAGE_BY_ID = gql`
+	query GET_PAGE_BY_ID($id: ID!) {
+	  page(idType: DATABASE_ID, id: $id) {
+	    id
+	    title
+	    content
+	    slug
+	    uri
+	    seo {
+          ...SeoFragment
+        }
+		status
+	  }
+	}
+  ${seoFragment}
+`;
