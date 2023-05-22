@@ -33,11 +33,16 @@
     font-size: 1.125em;
 }
 
+@media (min-width: 651px) {
+    .img {
+        width: 50%;
+    }
+}
+
 @media (max-width:650px) {
 
     .img {
         width: 100%;
-        ;
     }
 
     .content figure {

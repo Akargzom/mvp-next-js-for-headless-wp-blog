@@ -1,5 +1,4 @@
 .img {
-    width: 50%;
     height: auto;
     margin-bottom: 2em;
 }
@@ -25,11 +24,16 @@
     margin-bottom: 2em;
 }
 
+@media (min-width: 651px) {
+    .img {
+        width: 50%;
+    }
+}
+
 @media (max-width:650px) {
 
     .img {
         width: 100%;
-        ;
     }
 
     .content figure {

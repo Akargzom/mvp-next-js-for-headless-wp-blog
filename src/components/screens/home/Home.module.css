@@ -24,7 +24,6 @@ transition: all .8s;
 
 .info{
 width: 58%;
-padding: 3.3125em 6.875em 3.3125em 3.125em
 }
 
 .wrap:hover{
@@ -78,6 +77,12 @@ padding: 3.3125em 6.875em 3.3125em 3.125em
 
 .loadMore:hover{
   box-shadow: 0px 15px 60px -10px rgba(0, 114, 249, 0.5);
+}
+
+@media (min-width: 651px) {
+  .info{
+    padding: 3.3125em 6.875em 3.3125em 3.125em
+    }
 }
 
 @media (max-width: 650px) {

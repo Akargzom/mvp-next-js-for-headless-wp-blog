@@ -4,16 +4,11 @@
   margin: 0;
 }
 
-html {
-  font-size: 1.111vw;
-}
-
 body {
   position: relative;
 }
 
 .container {
-  padding: 0em 12.8125em;
   margin: 0 auto;
   max-width: 1600px;
 }
@@ -57,9 +52,22 @@ header>ul>.children {
   display: none;
 }
 
-@media (max-width:992px) {
+@media (min-width: 993px) {
+  html {
+    font-size: 1.111vw;
+  }
+  
+}
+
+@media (max-width:992px) and (min-width: 651px) {
   html {
     font-size: 1.3vw;
+  }
+}
+
+@media (min-width: 651px) {
+  .container {
+    padding: 0em 12.8125em;
   }
 }
 

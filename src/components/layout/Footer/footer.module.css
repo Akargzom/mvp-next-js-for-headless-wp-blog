@@ -5,7 +5,6 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 10px 50px -8px rgba(0, 114, 249, 0.15);
-    padding: 4em 12.8125em;
     margin-top: 6em;
 }
 
@@ -36,6 +35,17 @@
     margin-top: 2em;
     margin-left: 2.97em;
 }
+
+@media (min-width: 651px) {
+    .img {
+        height: 3.125em;
+    }
+
+    #footer {
+        padding: 4em 12.8125em;
+    }
+}
+
 
 @media (max-width:650px) {
     #footer {
