@@ -3,6 +3,7 @@ const inter = Inter({ subsets: ['latin'] })
 import Header from './header/header'
 import Footer from './Footer/footer'
 import Head from 'next/head'
+import { Analytics } from '@vercel/analytics/react';
 // import dymanic from 'next/dynamic'
 // const DynamicFooter = dynamic(()=> import ("./Footer/footer"), {
 //     ssr: false
@@ -15,6 +16,7 @@ const Layout = ({ children, props }) => {
             </Head>
             <Header getHead={props?.getHead} />
             {children}
+            <Analytics />
             <Footer getFoot={props?.getFoot} />
         </div>
     )
