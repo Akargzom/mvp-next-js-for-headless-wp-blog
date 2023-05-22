@@ -16,8 +16,8 @@ const Footer = (props) => {
                 menuItems.data && menuItems.data.menuItems.nodes.length &&
                 menuItems.data.menuItems.nodes.map(
                     k => <li key={k.id} className={k.cssClasses ? '' + k.cssClasses.map(c => c) + ' menuItem' : 'menuItem'}>
-                        <Link  href={k.url.replace('https://raduga.anebopro.com/wordpress/', '').replace('http://raduga.anebopro.com/wordpress/', '') ?
-                        k.url.replace('https://raduga.anebopro.com/wordpress/', '').replace('http://raduga.anebopro.com/wordpress/', '') 
+                        <Link  href={k.url.replace('https://raduga.anebopro.com/wordpress/', '').replace('http://raduga.anebopro.com/wordpress/', '/') ?
+                        k.url.replace('https://raduga.anebopro.com/wordpress/', '/').replace('http://raduga.anebopro.com/wordpress/', '/') 
                         : '/'} dangerouslySetInnerHTML={{ __html: sanitize(k.label) }}></Link>
                     </li>
                 )

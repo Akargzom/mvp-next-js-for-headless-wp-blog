@@ -16,13 +16,13 @@ const Header = (props) => {
                 menuItems.data && menuItems.data.menuItems.nodes.length &&
                 menuItems.data.menuItems.nodes.map(
                     k => <li key={k.id} className={k.cssClasses ? '' + k.cssClasses.map(c => c) + ' menuItem' : 'menuItem'}>
-                        <Link  href={k.url.replace('https://raduga.anebopro.com/wordpress/', '') ? k.url.replace('https://raduga.anebopro.com/wordpress/', '') : '/'} dangerouslySetInnerHTML={{ __html: sanitize(k.label) }}></Link>
+                        <Link  href={k.url.replace('https://raduga.anebopro.com/wordpress/', '') ? k.url.replace('https://raduga.anebopro.com/wordpress/', '/') : '/'} dangerouslySetInnerHTML={{ __html: sanitize(k.label) }}></Link>
                         {
                             k.childItems.edges.length ?
                                 <ul className="submenu">
                                     {
                                         k.childItems.edges.map(el => <li className={el.node.cssClasses ? '' + el.node.cssClasses.map(c => c) + ' childMenuItem' : 'childMenuItem'} key={el.node.id}>
-                                            <Link  href={el.node.url.replace('https://raduga.anebopro.com/wordpress/', '')} dangerouslySetInnerHTML={{ __html: sanitize(el.node.label) }}></Link>
+                                            <Link  href={el.node.url.replace('https://raduga.anebopro.com/wordpress/', '/')} dangerouslySetInnerHTML={{ __html: sanitize(el.node.label) }}></Link>
                                         </li>)
                                     }
                                 </ul>
